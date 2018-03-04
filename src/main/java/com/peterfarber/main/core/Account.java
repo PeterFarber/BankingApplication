@@ -1,8 +1,6 @@
 package com.peterfarber.main.core;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -16,19 +14,17 @@ public class Account implements java.io.Serializable {
 
     private final String id;
     private User accountOwner;
-    private final String accountNumber;
+    private double balance;
+    private String accountNumber;
 
     private ArrayList<User> allowedUser;
     private ArrayList<User> pendingUsers;
-
-    private double balance;
 
     public Account(User user){
         accountOwner = user;
         allowedUser = new ArrayList<User>();
         allowedUser.add(user);
         pendingUsers = new ArrayList<User>();
-        this.balance = 0;
         this.status = StatusEnum.PENDING;
         this.id = UUID.randomUUID().toString();
         this.accountNumber = String.valueOf((long)(Math.random() * 999999999));
@@ -46,6 +42,29 @@ public class Account implements java.io.Serializable {
         return id;
     }
 
+    public boolean checkAccountForUser(User user){
+        if(accountOwner.getUsername().equals(user.getUsername())){
+            return true;
+        }
+        if(allowedUser.indexOf(user) != -1){
+            return true;
+        }
+        return false;
+    }
+
+    public void setAccountNumber(String number){
+        this.accountNumber = number;
+    }
+
+    public double getBalance(){
+        return balance;
+    }
+
+    public void setBalance(double balance){
+        this.balance = balance;
+        this.save();
+    }
+
     public void join(User user){
         pendingUsers.add(user);
     }
@@ -58,6 +77,18 @@ public class Account implements java.io.Serializable {
             out.close();
             fileOut.close();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileInputStream fileIn = new FileInputStream("data/accounts/"+id+".ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            Account a = (Account)in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e){
             e.printStackTrace();
         }
     }

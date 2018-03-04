@@ -62,4 +62,8 @@ public class DirectoryLoader<T> {
         return t.get(i);
     }
 
+    public void add(T object){
+        t.add(object);
+    }
+
 }

@@ -4,10 +4,8 @@ import com.peterfarber.main.core.exceptions.BankException;
 import com.peterfarber.main.core.exceptions.InvalidInput;
 import com.peterfarber.main.core.exceptions.UserNotFound;
 import com.peterfarber.main.core.gui.Menu;
-import com.peterfarber.main.core.User;
-import com.peterfarber.main.core.Account;
-import com.peterfarber.main.core.DirectoryLoader;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -30,6 +28,7 @@ public class Interface {
     private Menu menu;
 
     private User loggedUser;
+    private Account selectedAccount;
 
     private DirectoryLoader<User> users;
     private DirectoryLoader<Account> accounts;
@@ -43,6 +42,7 @@ public class Interface {
         this.running = true;
         this.menu = new Menu();
         this.loggedUser = null;
+        this.selectedAccount = null;
         this.users = new DirectoryLoader("data/users");
         this.accounts = new DirectoryLoader("data/accounts");
 
@@ -52,12 +52,14 @@ public class Interface {
             //Load Information from directories/database (Users and Accounts)
             this.users.load();
             this.accounts.load();
+
             Vector<String> value = null;
 
             //Run the application!
             while(running) {
 
                 try {
+                    System.out.println();
                     value = this.menu.displayMenu();
                     if(value.get(0).equals("0")){
                         System.exit(-1);
@@ -94,13 +96,10 @@ public class Interface {
                         }
                         break;
                     case ACCOUNT:
-                            createAccountOperations(value);
+                            accountOperations(value);
                         break;
                     case ADMIN:
                             adminOperations(value);
-                        break;
-                    case SELECT_ACCOUNT:
-                            selectAccountOperations(value);
                         break;
                 }
             }
@@ -129,7 +128,24 @@ public class Interface {
             switch (value.get(0)) {
                 case "1":
                     //Select Account
-                    this.menu.setMenu(Menu.MenuEnum.SELECT_ACCOUNT);
+                    ArrayList<Account> accounts = findUserAccounts(loggedUser);
+                    if(accounts.size() > 0){
+                        System.out.println("\nSelect Account: ");
+                        for(int i = 0; i < accounts.size(); i++){
+                            System.out.println((i+1)+".) "+accounts.get(i).getAccountNumber());
+                        }
+                        System.out.print("Enter: ");
+                        String inputString = scanner.nextLine();
+                        Integer inputValue = Integer.parseInt(inputString);
+                        if(inputValue > 0 && inputValue <= accounts.size()){
+                            selectedAccount = accounts.get(inputValue-1);
+                            menu.setMenu(Menu.MenuEnum.ACCOUNT);
+                        }else{
+                            throw new InvalidInput();
+                        }
+                    }else{
+                        System.out.println("\n***********\nYou do not have any accounts!\n***********\n");
+                    }
                     break;
                 case "2":
                     //Apply for account
@@ -137,6 +153,7 @@ public class Interface {
                     if(findUserAccount(this.loggedUser.getUsername()) == null){
                         Account account = new Account(loggedUser);
                         account.save();
+                        this.accounts.add(account);
                         System.out.println("\n***********\nAccount Created! (Pending Approval)\n***********\n");
                     }else{
                         System.out.println("\n***********\nYou already own an Account!\n***********\n");
@@ -149,6 +166,7 @@ public class Interface {
                     Account account = findAccount(inputString);
                     if(account != null){
                         account.join(loggedUser);
+                        account.save();
                         System.out.println("\n***********\nAccount Joined! (Pending Approval)\n***********\n");
                     }
                     else{
@@ -171,6 +189,56 @@ public class Interface {
         }
     }
 
+    private void accountOperations(Vector<String> value) throws BankException{
+        String inputString = "";
+        double balance = 0;
+        if(value != null) {
+            switch(value.get(0)){
+                case "1":
+                    System.out.print("\nEnter Amount: ");
+                    inputString = scanner.nextLine();
+                    balance = Double.parseDouble(inputString);
+                    if(selectedAccount.getBalance() >= balance) {
+                        selectedAccount.setBalance(selectedAccount.getBalance()-balance);
+                    }else{
+                        throw new BankException("Not Enough Money In Account To Withdraw!");
+                    }
+                    break;
+                case "2":
+                    System.out.print("\nEnter Amount: ");
+                    inputString = scanner.nextLine();
+                    balance = Double.parseDouble(inputString);
+                    selectedAccount.setBalance(selectedAccount.getBalance()+balance);
+                    break;
+                case "3":
+                    System.out.print("Enter Account Number:");
+                    inputString = scanner.nextLine();
+                    Account account = findAccount(inputString);
+                    if(account != null) {
+                        System.out.print("\nEnter Amount:");
+                        inputString = scanner.nextLine();
+                        balance = Double.parseDouble(inputString);
+                        if(account.getBalance() >= balance){
+                            selectedAccount.setBalance(selectedAccount.getBalance()-balance);
+                            selectedAccount.save();
+                            account.setBalance(account.getBalance()+balance);
+                            account.save();
+                        }else{
+                            throw new BankException("Not Enough Money In Account To Transfer!");
+                        }
+                    }
+                    break;
+                case "4":
+                    System.out.println("Balance: $" + selectedAccount.getBalance());
+                    System.out.println("Number: " + selectedAccount.getAccountNumber());
+                    System.out.println("Owner: " + selectedAccount.getAccountOwner().getName());
+
+                    break;
+            }
+        }
+
+    }
+
     private void adminOperations(Vector<String> value){
         if(value != null) {
 
@@ -184,24 +252,13 @@ public class Interface {
             if (person == null) {
                 User user = new Customer(value.get(0),value.get(1), value.get(2));
                 user.save();
+                this.users.add(user);
                 loggedUser = user;
                 menu.setMenu(Menu.MenuEnum.CUSTOMER);
             } else {
                 menu.setMenu(Menu.MenuEnum.MAIN);
                 throw new BankException("User already exists!");
             }
-        }
-    }
-
-    private void createAccountOperations(Vector<String> value){
-        if(value != null) {
-
-        }
-    }
-
-    private void selectAccountOperations(Vector<String> value){
-        if(value != null) {
-
         }
     }
 
@@ -238,12 +295,27 @@ public class Interface {
     private User findUser(String username) throws BankException {
         for(int i = 0; i < this.users.getSize(); i++){
             User v = this.users.getIndex(i);
-            System.out.println(v.getUsername());
             if(username.equals(v.getUsername())){
                 return v;
             }
         }
         return null;
+    }
+
+    /**
+     * Searches through the array of Users and returns a User.
+     * @param user Username to find.
+     * @return User if found.
+     * @exception BankException On input error.
+     */
+    private ArrayList<Account> findUserAccounts(User user) throws BankException {
+        ArrayList<Account> accountReturn = new ArrayList<Account>();
+        for(int i = 0; i < this.accounts.getSize(); i++){
+            if(this.accounts.getIndex(i).checkAccountForUser(user)){
+                accountReturn.add(this.accounts.getIndex(i));
+            }
+        }
+        return accountReturn;
     }
 
     /**

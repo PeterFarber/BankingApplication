@@ -8,7 +8,7 @@ import java.util.Vector;
 
 public class Menu {
 
-    public enum MenuEnum{ MAIN, CREATE_USER, ACCOUNT, SELECT_ACCOUNT, LOGIN, ADMIN, CUSTOMER, EMPLOYEE }
+    public enum MenuEnum{ MAIN, CREATE_USER, ACCOUNT, LOGIN, ADMIN, CUSTOMER, EMPLOYEE }
 
     private MenuEnum currentMenu;
 
@@ -76,13 +76,11 @@ public class Menu {
 
     private Vector<String> displayAdminMenu() throws BankException{
         Vector<String> result = new Vector<String>();
-        byte min = 0, max = 2;
+
         System.out.println("Admin Menu: ");
         System.out.print("Enter Account Number: ");
-
         String inputString = input.nextLine();
 
-        menuOptionValidation(min, max, inputString);
 
         result.add(inputString);
         return result;
@@ -90,12 +88,19 @@ public class Menu {
 
     private Vector<String> displayAccountMenu() throws BankException{
         Vector<String> result = new Vector<String>();
-
+        byte min = 1, max = 4;
         System.out.println("Account:");
-        System.out.println("");
+        System.out.println("1.) Withdraw");
+        System.out.println("2.) Deposit");
+        System.out.println("3.) Transfer Funds");
+        System.out.println("4.) Check Balance");
+        result.add(input.nextLine());
+
+        menuOptionValidation(min, max, result.get(0));
 
         return result;
     }
+
 
     private Vector<String> displayUserCreateMenu() throws BankException{
         Vector<String> result = new Vector<String>();
@@ -113,7 +118,7 @@ public class Menu {
 
     private Vector<String> displayEmployeeMenu() throws BankException{
         Vector<String> result = new Vector<String>();
-        byte min = 0, max = 2;
+        byte min = 1, max = 2;
 
         System.out.println("Employee Menu: ");
         System.out.println("1.) Customer Applications");

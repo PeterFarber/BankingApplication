@@ -1,9 +1,6 @@
 package com.peterfarber.main.core;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.UUID;
 
 public class User implements Serializable {
@@ -20,6 +17,10 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
         this.id = UUID.randomUUID().toString();
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -45,5 +46,19 @@ public class User implements Serializable {
             e.printStackTrace();
         }
     }
+
+    public void delete(){
+        File file = new File("data/users/"+this.id+".ser");
+
+        if(file.delete())
+        {
+            System.out.println("File deleted successfully");
+        }
+        else
+        {
+            System.out.println("Failed to delete the file");
+        }
+    }
+
 
 }

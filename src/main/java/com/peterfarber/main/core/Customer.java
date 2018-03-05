@@ -1,5 +1,6 @@
 package com.peterfarber.main.core;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Customer extends User{

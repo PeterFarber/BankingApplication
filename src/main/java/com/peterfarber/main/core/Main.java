@@ -7,13 +7,15 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
 
-        LoggingUtil.logFatal("Fatal!");
-
+//
+//
 //        User customer = new Customer("Peter Farber", "Wizkid", "12345");
 //        customer.save();
-//        User employee = new Employee("Peter Farber", "Wizkid_EMP", "12345");
+//        User employee = new Employee("Employee", "Employee", "pass");
 //        employee.save();
-//        Account account = new Account();
+//        User admin = new Admin("Admin", "Admin", "pass");
+//        admin.save();
+//        Account account = new Account(customer);
 //        account.save();
 
         //Create an Instance of Interface class.

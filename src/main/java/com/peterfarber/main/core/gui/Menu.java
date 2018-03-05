@@ -1,5 +1,6 @@
 package com.peterfarber.main.core.gui;
 
+import com.peterfarber.main.core.Validator;
 import com.peterfarber.main.core.exceptions.BankException;
 import com.peterfarber.main.core.exceptions.InvalidInput;
 
@@ -17,7 +18,7 @@ public class Menu {
     public Menu(){
 
         this.currentMenu = MenuEnum.MAIN;
-         this.input = new Scanner(System.in);
+        this.input = new Scanner(System.in);
 
     }
 
@@ -68,7 +69,10 @@ public class Menu {
 
         String inputString = input.nextLine();
 
-        menuOptionValidation(min, max, inputString);
+        if(!Validator.noCharacter(inputString) || !Validator.notNull(inputString) || !Validator.withinMinMax(min, max, inputString)){
+            throw new InvalidInput();
+        }
+
 
         result.add(inputString);
         return result;
@@ -77,10 +81,20 @@ public class Menu {
     private Vector<String> displayAdminMenu() throws BankException{
         Vector<String> result = new Vector<String>();
 
+        byte min = 1, max = 4;
+
         System.out.println("Admin Menu: ");
-        System.out.print("Enter Account Number: ");
+        System.out.println("1.) View Account");
+        System.out.println("2.) Select Account");
+        System.out.println("3.) Approve/Deny Applications");
+        System.out.println("4.) Back");
+        System.out.print("Enter: ");
+
         String inputString = input.nextLine();
 
+        if(!Validator.noCharacter(inputString) || !Validator.notNull(inputString) || !Validator.withinMinMax(min, max, inputString)){
+            throw new InvalidInput();
+        }
 
         result.add(inputString);
         return result;
@@ -88,15 +102,21 @@ public class Menu {
 
     private Vector<String> displayAccountMenu() throws BankException{
         Vector<String> result = new Vector<String>();
-        byte min = 1, max = 4;
+        byte min = 1, max = 6;
         System.out.println("Account:");
         System.out.println("1.) Withdraw");
         System.out.println("2.) Deposit");
         System.out.println("3.) Transfer Funds");
         System.out.println("4.) Check Balance");
+        System.out.println("5.) Cancel Account");
+        System.out.println("6.) Back");
+        System.out.print("Enter: ");
+
         result.add(input.nextLine());
 
-        menuOptionValidation(min, max, result.get(0));
+        if(!Validator.noCharacter(result.get(0)) || !Validator.notNull(result.get(0)) || !Validator.withinMinMax(min, max, result.get(0))){
+            throw new InvalidInput();
+        }
 
         return result;
     }
@@ -108,25 +128,38 @@ public class Menu {
         System.out.println("User Creation: ");
         System.out.print("Name: ");
         result.add(input.nextLine());
+        if(!Validator.notNull(result.get(0))){
+            throw new InvalidInput();
+        }
         System.out.print("Username: ");
         result.add(input.nextLine());
+        if( !Validator.notNull(result.get(1))){
+            throw new InvalidInput();
+        }
         System.out.print("Password: ");
         result.add(input.nextLine());
+        if( !Validator.notNull(result.get(2))){
+            throw new InvalidInput();
+        }
 
         return result;
     }
 
     private Vector<String> displayEmployeeMenu() throws BankException{
         Vector<String> result = new Vector<String>();
-        byte min = 1, max = 2;
+        byte min = 1, max = 3;
 
         System.out.println("Employee Menu: ");
-        System.out.println("1.) Customer Applications");
-        System.out.println("2.) Select Account");
+        System.out.println("1.) View Account");
+        System.out.println("2.) Approve/Deny Applications");
+        System.out.println("3.) Back");
+        System.out.print("Enter: ");
+
 
         String inputString = input.nextLine();
-
-        menuOptionValidation(min, max, inputString);
+        if(!Validator.noCharacter(inputString) || !Validator.notNull(inputString) || !Validator.withinMinMax(min, max, inputString)){
+            throw new InvalidInput();
+        }
 
         result.add(inputString);
 
@@ -135,16 +168,19 @@ public class Menu {
 
     private Vector<String> displayCustomerMenu() throws BankException{
         Vector<String> result = new Vector<String>();
-        byte min = 0, max = 2;
+        byte min = 0, max = 4;
         System.out.println("Customer Menu: ");
         System.out.println("1.) Select Account");
         System.out.println("2.) Apply For Account");
         System.out.println("3.) Join Account");
+        System.out.println("4.) Back");
         System.out.print("Enter: ");
 
         String inputString = input.nextLine();
 
-        menuOptionValidation(min, max, inputString);
+        if(!Validator.noCharacter(inputString) || !Validator.notNull(inputString) || !Validator.withinMinMax(min, max, inputString)){
+            throw new InvalidInput();
+        }
 
         result.add(inputString);
         return result;
@@ -156,29 +192,16 @@ public class Menu {
         System.out.println("Login Menu: ");
         System.out.print("Enter Username: ");
         result.add(input.nextLine());
+        if(!Validator.notNull(result.get(0))){
+            throw new InvalidInput();
+        }
         System.out.print("Enter Password: ");
         result.add(input.nextLine());
+        if(!Validator.notNull(result.get(1))){
+            throw new InvalidInput();
+        }
 
         return result;
-    }
-
-    private void menuOptionValidation(byte min, byte max, String input) throws BankException{
-        if(input.length() == 0){
-            throw new InvalidInput("No Input!");
-        }
-        byte inputValue = Integer.valueOf(input).byteValue();
-        //Make sure the input only contains one character.
-        if(input.length() != 1){
-            throw new InvalidInput("Invalid Input To Long!");
-        }
-        //Check to see if that character is a digit!
-        if(!Character.isDigit(input.charAt(0))){
-            throw new InvalidInput("Invalid Input Not Digit!");
-        }
-        //Make sure it is within the allowed options.
-        if(!(inputValue >= min && inputValue <= max)){
-            throw new InvalidInput(inputValue, min, max);
-        }
     }
 
 

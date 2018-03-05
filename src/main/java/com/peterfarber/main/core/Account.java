@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class Account implements java.io.Serializable {
 
-    public enum StatusEnum{ PENDING, DENINED, ACTIVE }
+    public enum StatusEnum{ PENDING, DENIED, ACTIVE }
 
     private static final long serialVersionUID = 1766824171086983034L;
 
@@ -17,13 +17,13 @@ public class Account implements java.io.Serializable {
     private double balance;
     private String accountNumber;
 
-    private ArrayList<User> allowedUser;
+    private ArrayList<User> allowedUsers;
     private ArrayList<User> pendingUsers;
 
     public Account(User user){
         accountOwner = user;
-        allowedUser = new ArrayList<User>();
-        allowedUser.add(user);
+        allowedUsers = new ArrayList<User>();
+        allowedUsers.add(user);
         pendingUsers = new ArrayList<User>();
         this.status = StatusEnum.PENDING;
         this.id = UUID.randomUUID().toString();
@@ -46,7 +46,7 @@ public class Account implements java.io.Serializable {
         if(accountOwner.getUsername().equals(user.getUsername())){
             return true;
         }
-        if(allowedUser.indexOf(user) != -1){
+        if(allowedUsers.indexOf(user) != -1){
             return true;
         }
         return false;
@@ -54,6 +54,14 @@ public class Account implements java.io.Serializable {
 
     public void setAccountNumber(String number){
         this.accountNumber = number;
+    }
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 
     public double getBalance(){
@@ -66,7 +74,16 @@ public class Account implements java.io.Serializable {
     }
 
     public void join(User user){
-        pendingUsers.add(user);
+        allowedUsers.add(user);
+    }
+
+    public boolean hasUser(User user){
+        for(int i = 0; i < allowedUsers.size(); i++){
+            if(allowedUsers.get(i).equals(user)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void save(){
@@ -79,17 +96,36 @@ public class Account implements java.io.Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        try {
-            FileInputStream fileIn = new FileInputStream("data/accounts/"+id+".ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            Account a = (Account)in.readObject();
-            in.close();
-            fileIn.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e){
-            e.printStackTrace();
+    public void print(){
+        System.out.println("********Account Info*********:");
+        System.out.println("Id: " +  this.id);
+        System.out.println("Account Owner: " +  this.accountOwner.getUsername());
+        System.out.println("Account Number: " +  this.accountNumber);
+        System.out.println("Balance: " +  this.balance);
+        System.out.println("Approved Users: ");
+        for(int i = 0; i < allowedUsers.size(); i++){
+            System.out.println((i+1)+".) " + allowedUsers.get(i).getUsername());
+        }
+
+        System.out.println("Pending Users: ");
+        for(int i = 0; i < pendingUsers.size(); i++){
+            System.out.println((i+1)+".) " + pendingUsers.get(i).getUsername());
+        }
+
+    }
+
+    public void delete(){
+        File file = new File("data/accounts/"+id+".ser");
+
+        if(file.delete())
+        {
+            System.out.println("File deleted successfully");
+        }
+        else
+        {
+            System.out.println("Failed to delete the file");
         }
     }
 

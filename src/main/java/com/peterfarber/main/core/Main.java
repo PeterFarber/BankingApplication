@@ -17,8 +17,6 @@ public class Main {
 //        Account account = new Account(customer);
 //        account.save();
 
-        //Hello
-
         //Create an Instance of Interface class.
         Interface theInterface = new Interface();
 

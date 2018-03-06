@@ -7,8 +7,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
 
-//
-//
+
 //        User customer = new Customer("Peter Farber", "Wizkid", "12345");
 //        customer.save();
 //        User employee = new Employee("Employee", "Employee", "pass");
@@ -18,11 +17,14 @@ public class Main {
 //        Account account = new Account(customer);
 //        account.save();
 
+        //Hello
+
         //Create an Instance of Interface class.
         Interface theInterface = new Interface();
 
         //Close Application!
         System.exit(1);
+
 
     }
 

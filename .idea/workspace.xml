@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd7c67b2-3a8c-42f1-8e3b-20fae3d72ba1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/peterfarber/main/core/InterfaceTest.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/coverage-error.log" afterPath="$PROJECT_DIR$/coverage-error.log" />
-      <change beforePath="$PROJECT_DIR$/data/users/f08f56b0-66c2-4748-83ed-864d8c8e9cee.ser" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/logs/log.log" afterPath="$PROJECT_DIR$/logs/log.log" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/peterfarber/main/core/DirectoryLoader.java" afterPath="$PROJECT_DIR$/src/main/java/com/peterfarber/main/core/DirectoryLoader.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/peterfarber/main/core/Interface.java" afterPath="$PROJECT_DIR$/src/main/java/com/peterfarber/main/core/Interface.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/peterfarber/main/core/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/peterfarber/main/core/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/peterfarber/main/core/DirectoryLoaderTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/peterfarber/main/core/DirectoryLoaderTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -650,7 +642,7 @@
       <workItem from="1520125995359" duration="32826000" />
       <workItem from="1520299611696" duration="2749000" />
       <workItem from="1520348225541" duration="980000" />
-      <workItem from="1520352636181" duration="10544000" />
+      <workItem from="1520352636181" duration="10564000" />
     </task>
     <servers />
   </component>
@@ -687,7 +679,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60491000" />
+    <option name="totallyTimeSpent" value="60511000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

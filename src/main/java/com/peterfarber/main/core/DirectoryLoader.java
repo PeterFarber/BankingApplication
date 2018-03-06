@@ -66,8 +66,7 @@ public class DirectoryLoader<T> {
         t.add(object);
     }
 
-    public void remove(T object){
-        t.remove(object);
-    }
+    public void remove(T object) { t.removeElement(object); }
+
 
 }

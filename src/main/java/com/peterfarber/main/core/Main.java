@@ -19,6 +19,7 @@ public class Main {
 
         //Create an Instance of Interface class.
         Interface theInterface = new Interface();
+        theInterface.run();
 
         //Close Application!
         System.exit(1);

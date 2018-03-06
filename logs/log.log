@@ -25,3 +25,63 @@
 2018-03-05 09:04:48 INFO  root:27 - username: is accessing 739096627.
 2018-03-05 09:04:58 INFO  root:27 - username: Deposited 1.0E136 from 739096627 account!
 2018-03-05 15:17:00 INFO  root:27 - Wiz: User Created!
+2018-03-06 13:32:16 INFO  root:27 - Customer: Withdrew 100.0 from 693623417 account!
+2018-03-06 13:39:46 INFO  root:27 - Customer: Transferred 1000.0 from 63196218 to 667652448.
+2018-03-06 13:42:22 INFO  root:27 - Customer: Transferred 1000.0 from 107305951 to 945651578.
+2018-03-06 13:42:48 INFO  root:27 - Customer: Withdrew 100.0 from 644313653 account!
+2018-03-06 13:42:48 INFO  root:27 - Customer: Deleted 589755126.
+2018-03-06 13:42:48 INFO  root:27 - Customer: applied for an account 254935477.
+2018-03-06 13:42:48 INFO  root:27 - Customer: Transferred 1000.0 from 27813580 to 881441989.
+2018-03-06 13:42:48 INFO  root:27 - Admin: Deposited 100.0 from 333717471 account!
+2018-03-06 13:43:26 INFO  root:27 - Customer: Withdrew 100.0 from 1295403 account!
+2018-03-06 13:43:26 INFO  root:27 - Customer: Deleted 880680592.
+2018-03-06 13:43:26 INFO  root:27 - Customer: applied for an account 69120483.
+2018-03-06 13:43:26 INFO  root:27 - Customer: Transferred 1000.0 from 250735606 to 202626830.
+2018-03-06 13:43:26 INFO  root:27 - Admin: Deposited 100.0 from 21495865 account!
+2018-03-06 14:13:25 INFO  root:27 - Admin: is accessing 370134559.
+2018-03-06 14:19:36 INFO  root:27 - Customer: applied to join an account 576667454.
+2018-03-06 14:28:12 INFO  root:27 - Customer: applied for an account 128803925.
+2018-03-06 14:28:25 INFO  root:27 - Customer: approved account 128803925.
+2018-03-06 14:36:14 INFO  root:27 - Customer: Withdrew 100.0 from 869407161 account!
+2018-03-06 14:36:14 INFO  root:27 - Admin: is accessing 80923731.
+2018-03-06 14:36:14 INFO  root:27 - Customer: Deleted 983965284.
+2018-03-06 14:36:14 INFO  root:27 - Customer: applied to join an account 408051759.
+2018-03-06 14:36:14 INFO  root:27 - Customer: applied for an account 145704677.
+2018-03-06 14:36:14 INFO  root:27 - Customer: approved account 145704677.
+2018-03-06 14:36:14 INFO  root:27 - Customer: applied for an account 551407800.
+2018-03-06 14:36:14 INFO  root:27 - Customer: Transferred 1000.0 from 506420241 to 783654428.
+2018-03-06 14:36:49 INFO  root:27 - Customer: Withdrew 100.0 from 671378842 account!
+2018-03-06 14:36:49 INFO  root:27 - Admin: is accessing 343632013.
+2018-03-06 14:36:49 INFO  root:27 - Customer: Deleted 891576313.
+2018-03-06 14:36:49 INFO  root:27 - Customer: applied to join an account 188744977.
+2018-03-06 14:36:49 INFO  root:27 - Customer: applied for an account 66754389.
+2018-03-06 14:36:49 INFO  root:27 - Customer: approved account 66754389.
+2018-03-06 14:36:49 INFO  root:27 - Customer: applied for an account 833992538.
+2018-03-06 14:36:49 INFO  root:27 - Customer: Transferred 1000.0 from 122827002 to 770634590.
+2018-03-06 14:37:23 INFO  root:27 - Customer: Withdrew 100.0 from 102838315 account!
+2018-03-06 14:37:23 INFO  root:27 - Admin: is accessing 724004326.
+2018-03-06 14:37:23 INFO  root:27 - Customer: Deleted 928376541.
+2018-03-06 14:37:23 INFO  root:27 - Customer: applied to join an account 377167697.
+2018-03-06 14:37:23 INFO  root:27 - Customer: applied for an account 111714427.
+2018-03-06 14:37:23 INFO  root:27 - Customer: approved account 111714427.
+2018-03-06 14:37:23 INFO  root:27 - Customer: applied for an account 100831102.
+2018-03-06 14:37:23 INFO  root:27 - Customer: Transferred 1000.0 from 465552201 to 850430067.
+2018-03-06 14:37:23 INFO  root:27 - Admin: Deposited 100.0 from 104401349 account!
+2018-03-06 14:37:55 INFO  root:27 - Customer: Withdrew 100.0 from 353864410 account!
+2018-03-06 14:37:55 INFO  root:27 - Admin: is accessing 186215602.
+2018-03-06 14:37:55 INFO  root:27 - Customer: Deleted 392006627.
+2018-03-06 14:37:55 INFO  root:27 - Customer: applied to join an account 96602739.
+2018-03-06 14:37:55 INFO  root:27 - Customer: applied for an account 707292085.
+2018-03-06 14:37:55 INFO  root:27 - Customer: approved account 707292085.
+2018-03-06 14:37:55 INFO  root:27 - Customer: applied for an account 457562514.
+2018-03-06 14:37:55 INFO  root:27 - Customer: Transferred 1000.0 from 4418034 to 409828939.
+2018-03-06 14:37:56 INFO  root:27 - Admin: Deposited 100.0 from 713060486 account!
+2018-03-06 14:38:27 INFO  root:27 - Customer: Withdrew 100.0 from 881546748 account!
+2018-03-06 14:38:27 INFO  root:27 - Admin: is accessing 976209814.
+2018-03-06 14:38:27 INFO  root:27 - Customer: Deleted 721850667.
+2018-03-06 14:38:27 INFO  root:27 - Customer: applied to join an account 153000998.
+2018-03-06 14:38:27 INFO  root:27 - Customer: applied for an account 876922868.
+2018-03-06 14:38:27 INFO  root:27 - Customer: approved account 876922868.
+2018-03-06 14:38:27 INFO  root:27 - Customer: applied for an account 454104497.
+2018-03-06 14:38:27 INFO  root:27 - Customer: Transferred 1000.0 from 967416944 to 528409045.
+2018-03-06 14:38:27 INFO  root:27 - Admin: Deposited 100.0 from 503418099 account!

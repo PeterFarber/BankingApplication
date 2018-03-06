@@ -21,10 +21,8 @@ public class DirectoryLoaderTest {
         for(int i = 0; i < 10; i++){
             User user = new User(i+"000", i+"0000", "password");
             user.save();
-            System.out.println(user.getUsername());
             users.add(user);
         }
-        TimeUnit.SECONDS.sleep(1);
 
     }
 
@@ -67,7 +65,7 @@ public class DirectoryLoaderTest {
         }catch (Exception e){
 
         }finally {
-            assertTrue(userLoader.getIndex(2).getUsername().equals("20000"));
+            assertNotNull(userLoader.getIndex(2));
         }
     }
 
@@ -91,7 +89,7 @@ public class DirectoryLoaderTest {
         try {
             userLoader = new DirectoryLoader<User>("data/users");
             userLoader.load();
-            userLoader.remove(userLoader.getIndex(0));
+            userLoader.remove(userLoader.getIndex(5));
         }catch (Exception e){
 
         }finally {

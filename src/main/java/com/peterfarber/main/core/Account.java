@@ -4,11 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Account implements java.io.Serializable {
+public class Account {
 
     public enum StatusEnum{ PENDING, DENIED, ACTIVE }
-
-    private static final long serialVersionUID = 1766824171086983034L;
 
     private StatusEnum status;
 
@@ -87,15 +85,7 @@ public class Account implements java.io.Serializable {
     }
 
     public void save(){
-        try {
-            FileOutputStream fileOut = new FileOutputStream("data/accounts/"+id+".ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(this);
-            out.close();
-            fileOut.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void print(){
@@ -117,16 +107,7 @@ public class Account implements java.io.Serializable {
     }
 
     public void delete(){
-        File file = new File("data/accounts/"+id+".ser");
 
-        if(file.delete())
-        {
-            System.out.println("File deleted successfully");
-        }
-        else
-        {
-            System.out.println("Failed to delete the file");
-        }
     }
 
 }

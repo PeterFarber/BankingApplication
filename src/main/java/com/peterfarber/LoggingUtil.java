@@ -1,5 +1,6 @@
 package com.peterfarber;
 
+import com.peterfarber.main.core.dao.LogDao;
 import org.apache.log4j.Logger;
 import sun.rmi.runtime.Log;
 
@@ -25,6 +26,8 @@ public class LoggingUtil {
 
     public static void logInfo(String s){
         log.info(s);
+        LogDao logDao = new LogDao();
+        logDao.createPreparedStmt(s);
     }
 
 }

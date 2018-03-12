@@ -85,3 +85,103 @@
 2018-03-06 14:38:27 INFO  root:27 - Customer: applied for an account 454104497.
 2018-03-06 14:38:27 INFO  root:27 - Customer: Transferred 1000.0 from 967416944 to 528409045.
 2018-03-06 14:38:27 INFO  root:27 - Admin: Deposited 100.0 from 503418099 account!
+2018-03-07 13:08:10 INFO  root:27 - Customer: Withdrew 100.0 from 411841620 account!
+2018-03-07 13:08:10 INFO  root:27 - Admin: is accessing 172244809.
+2018-03-07 13:08:10 INFO  root:27 - Customer: Deleted 215096083.
+2018-03-07 13:08:10 INFO  root:27 - Customer: applied to join an account 587954073.
+2018-03-07 13:08:10 INFO  root:27 - Customer: applied for an account 196632375.
+2018-03-07 13:08:10 INFO  root:27 - Customer: approved account 196632375.
+2018-03-07 13:08:10 INFO  root:27 - Customer: applied for an account 511570067.
+2018-03-07 13:08:10 INFO  root:27 - Customer: Transferred 1000.0 from 814292515 to 585245757.
+2018-03-07 13:08:10 INFO  root:27 - Admin: Deposited 100.0 from 71841382 account!
+2018-03-11 16:01:26 INFO  root:27 - Wizkid: User Created!
+2018-03-11 16:02:35 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:03:16 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:04:15 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:05:41 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:05:43 INFO  root:27 - Wizkid: applied for an account 893732580.
+2018-03-11 16:12:45 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:13:44 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:13:47 INFO  root:27 - Wizkid: applied for an account 546314116.
+2018-03-11 16:14:26 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:15:21 INFO  root:27 - Wizkid: applied for an account 458890821.
+2018-03-11 16:15:39 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:16:25 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:16:51 INFO  root:27 - Wizkid: is accessing 893732580.
+2018-03-11 16:16:56 INFO  root:27 - Wizkid: Deposited 100.0 from 893732580 account!
+2018-03-11 16:17:19 INFO  root:27 - Wizkid: is accessing 893732580.
+2018-03-11 16:18:37 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:18:40 INFO  root:27 - Wizkid: is accessing 893732580.
+2018-03-11 16:18:43 INFO  root:27 - Wizkid: Deposited 1000.0 from 893732580 account!
+2018-03-11 16:19:11 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:19:13 INFO  root:27 - Wizkid: is accessing 893732580.
+2018-03-11 16:19:18 INFO  root:27 - Wizkid: Deposited 1000.0 from 893732580 account!
+2018-03-11 16:27:08 INFO  root:27 - Wizkid: Deposited 100.0 from 893732580 account!
+2018-03-11 16:27:17 INFO  root:27 - Wizkid: Withdrew 200.0 from 893732580 account!
+2018-03-11 16:27:33 INFO  root:27 - Wizkid: is accessing 893732580.
+2018-03-11 16:36:46 INFO  root:27 - Wizkid: User Created!
+2018-03-11 16:36:51 INFO  root:27 - Wizkid: applied for an account 38268151.
+2018-03-11 16:37:16 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:37:28 INFO  root:27 - Wizkid: is accessing 38268151.
+2018-03-11 16:37:40 INFO  root:27 - Wizkid: Deposited 1000.0 from 38268151 account!
+2018-03-11 16:37:49 INFO  root:27 - Wizkid: Deleted 38268151.
+2018-03-11 16:38:45 INFO  root:27 - Admin: User Created!
+2018-03-11 16:39:10 INFO  root:27 - Employee: User Created!
+2018-03-11 16:39:33 INFO  root:27 - Employee: Logged In!
+2018-03-11 16:40:06 INFO  root:27 - Employee: Logged In!
+2018-03-11 16:40:38 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:40:39 INFO  root:27 - Wizkid: applied for an account 842007415.
+2018-03-11 16:40:49 INFO  root:27 - Employee: Logged In!
+2018-03-11 16:40:55 INFO  root:27 - Employee: approved account 842007415.
+2018-03-11 16:41:02 INFO  root:27 - Wizkid: Logged In!
+2018-03-11 16:42:25 INFO  root:27 - Admin: Logged In!
+2018-03-11 16:43:31 INFO  root:27 - Admin: Logged In!
+2018-03-11 16:43:34 INFO  root:27 - Admin: printed account 842007415.
+2018-03-11 16:43:45 INFO  root:27 - Admin: is accessing 842007415.
+2018-03-11 16:43:52 INFO  root:27 - Admin: approved account 842007415.
+2018-03-11 16:45:25 INFO  root:27 - password: User Created!
+2018-03-11 16:45:32 INFO  root:27 - password: applied for an account 424478526.
+2018-03-11 16:46:16 INFO  root:27 - Admin: Logged In!
+2018-03-11 16:46:40 INFO  root:27 - Admin: is accessing 424478526.
+2018-03-11 16:47:49 INFO  root:27 - Admin: Deposited Infinity from 424478526 account!
+2018-03-11 16:48:05 INFO  root:27 - Admin: Withdrew Infinity from 424478526 account!
+2018-03-11 16:49:39 INFO  root:27 - password: Logged In!
+2018-03-11 16:49:55 INFO  root:27 - Admin: Logged In!
+2018-03-11 16:50:00 INFO  root:27 - Admin: approved account 424478526.
+2018-03-11 16:50:08 INFO  root:27 - password: Logged In!
+2018-03-11 16:50:10 INFO  root:27 - password: is accessing 424478526.
+2018-03-11 16:50:26 INFO  root:27 - password: Withdrew 1.0 from 424478526 account!
+2018-03-11 16:50:56 INFO  root:27 - password: Withdrew 1.0E300 from 424478526 account!
+2018-03-11 16:57:50 INFO  root:27 - password: Logged In!
+2018-03-11 16:57:52 INFO  root:27 - password: is accessing 424478526.
+2018-03-11 16:58:30 INFO  root:27 - password: Withdrew 1.0 from 424478526 account!
+2018-03-11 16:58:34 INFO  root:27 - password: Withdrew 1.0E308 from 424478526 account!
+2018-03-11 16:58:55 INFO  root:27 - password: Withdrew Infinity from 424478526 account!
+2018-03-11 16:59:09 INFO  root:27 - password: Deposited 100.0 from 424478526 account!
+2018-03-11 22:58:16 INFO  root:28 - Wizkid: Logged In!
+2018-03-11 22:58:57 INFO  root:28 - Wizkid: Logged In!
+2018-03-11 23:00:18 INFO  root:28 - Wizkid: Logged In!
+2018-03-11 23:00:46 INFO  root:28 - Wizkid: Logged In!
+2018-03-11 23:21:08 INFO  root:28 - Customer: Withdrew 100.0 from 20239685 account!
+2018-03-11 23:21:08 INFO  root:28 - Customer: Deleted 694505151.
+2018-03-11 23:21:09 INFO  root:28 - Admin: Deposited 100.0 from 422328546 account!
+2018-03-11 23:21:26 INFO  root:28 - Customer: Withdrew 100.0 from 566845203 account!
+2018-03-11 23:21:26 INFO  root:28 - Customer: Deleted 435938896.
+2018-03-11 23:21:26 INFO  root:28 - Admin: Deposited 100.0 from 950557033 account!
+2018-03-12 10:30:44 INFO  root:28 - Wizkid: Logged In!
+2018-03-12 10:30:48 INFO  root:28 - Wizkid: is accessing 842007415.
+2018-03-12 10:30:50 INFO  root:28 - Wizkid: Deleted 842007415.
+2018-03-12 10:30:54 INFO  root:28 - Wizkid: applied for an account 234498496.
+2018-03-12 10:31:05 INFO  root:28 - Admin: Logged In!
+2018-03-12 10:31:40 INFO  root:28 - Admin: printed account 234498496.
+2018-03-12 10:31:46 INFO  root:28 - Admin: is accessing 234498496.
+2018-03-12 10:31:55 INFO  root:28 - Admin: approved account 234498496.
+2018-03-12 12:25:25 INFO  root:28 - Wizkid: Logged In!
+2018-03-12 12:26:15 INFO  root:28 - Wizkid: is accessing 234498496.
+2018-03-12 12:26:34 INFO  root:28 - password: Logged In!
+2018-03-12 12:26:36 INFO  root:28 - password: is accessing 424478526.
+2018-03-12 12:26:54 INFO  root:28 - password: Transferred 90.0 from 424478526 to 234498496.
+2018-03-12 12:27:56 INFO  root:28 - Wizkid: Logged In!
+2018-03-12 12:27:58 INFO  root:28 - Wizkid: is accessing 234498496.
+2018-03-12 12:28:08 INFO  root:28 - Wizkid: is accessing 234498496.
+2018-03-12 12:28:08 INFO  root:28 - Wizkid: Transferred 10.0 from 234498496 to 424478526.

@@ -1,5 +1,7 @@
 package com.peterfarber.main.core;
 
+import com.peterfarber.main.core.dao.AccountDao;
+import com.peterfarber.main.core.dao.UserDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,14 +15,21 @@ public class AccountTest {
     User testCustomer;
     User testCustomerJoin;
     Account testAccount;
+    AccountDao accountDao;
+    UserDao userDao;
 
     @Before
     public void setUp() throws Exception {
-
+        accountDao= new AccountDao();
+        userDao = new UserDao();
         testCustomer = new Customer("Test" ,"Customer", "Pass");
+        userDao.createPreparedStmt(testCustomer);
         testCustomerJoin = new Customer("Test" ,"Join", "Pass");
-        testAccount = new Account(testCustomer);
-        testAccount.save();
+        userDao.createPreparedStmt(testCustomerJoin);
+
+        testAccount = new Account(testCustomer.getUsername());
+        testAccount.join(testCustomer);
+        accountDao.createPreparedStmt(testAccount);
 
     }
 
@@ -28,8 +37,9 @@ public class AccountTest {
     public void tearDown() throws Exception {
 
         //Delete Test Files
-        testAccount.delete();
-        testCustomer.delete();
+        accountDao.delete(testAccount.getAccountNumber());
+        userDao.delete(testCustomer.getUsername());
+        userDao.delete(testCustomerJoin.getUsername());
 
     }
 
@@ -60,19 +70,4 @@ public class AccountTest {
     }
 
 
-    @Test
-    public void delete() {
-
-        //Save
-        testCustomer.save();
-
-        //Delete
-        testCustomer.delete();
-
-        //Check if file exists!
-        File tmpDir = new File("/data/users/"+ testCustomer.getId() + ".ser");
-        assertTrue(!tmpDir.exists());
-
-
-    }
 }

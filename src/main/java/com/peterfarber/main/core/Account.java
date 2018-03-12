@@ -10,25 +10,25 @@ public class Account {
 
     private StatusEnum status;
 
-    private final String id;
-    private User accountOwner;
+    private String accountOwner;
     private double balance;
     private String accountNumber;
 
     private ArrayList<User> allowedUsers;
-    private ArrayList<User> pendingUsers;
 
-    public Account(User user){
+//    public Account(String number, String owner, int status, double balance ){
+//
+//    }
+
+    public Account(String user){
         accountOwner = user;
         allowedUsers = new ArrayList<User>();
-        allowedUsers.add(user);
-        pendingUsers = new ArrayList<User>();
+        //allowedUsers.add(user);
         this.status = StatusEnum.PENDING;
-        this.id = UUID.randomUUID().toString();
         this.accountNumber = String.valueOf((long)(Math.random() * 999999999));
     }
 
-    public User getAccountOwner() {
+    public String getAccountOwner() {
         return accountOwner;
     }
 
@@ -36,12 +36,8 @@ public class Account {
         return accountNumber;
     }
 
-    public String getId() {
-        return id;
-    }
-
     public boolean checkAccountForUser(User user){
-        if(accountOwner.getUsername().equals(user.getUsername())){
+        if(accountOwner.equals(user.getUsername())){
             return true;
         }
         if(allowedUsers.indexOf(user) != -1){
@@ -68,7 +64,10 @@ public class Account {
 
     public void setBalance(double balance){
         this.balance = balance;
-        this.save();
+    }
+
+    public ArrayList<User> getAllUsers() {
+        return allowedUsers;
     }
 
     public void join(User user){
@@ -84,29 +83,15 @@ public class Account {
         return false;
     }
 
-    public void save(){
-
-    }
-
     public void print(){
         System.out.println("********Account Info*********:");
-        System.out.println("Id: " +  this.id);
-        System.out.println("Account Owner: " +  this.accountOwner.getUsername());
+        System.out.println("Account Owner: " +  this.accountOwner);
         System.out.println("Account Number: " +  this.accountNumber);
         System.out.println("Balance: " +  this.balance);
         System.out.println("Approved Users: ");
         for(int i = 0; i < allowedUsers.size(); i++){
             System.out.println((i+1)+".) " + allowedUsers.get(i).getUsername());
         }
-
-        System.out.println("Pending Users: ");
-        for(int i = 0; i < pendingUsers.size(); i++){
-            System.out.println((i+1)+".) " + pendingUsers.get(i).getUsername());
-        }
-
-    }
-
-    public void delete(){
 
     }
 

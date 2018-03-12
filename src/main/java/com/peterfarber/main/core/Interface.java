@@ -1,12 +1,15 @@
 package com.peterfarber.main.core;
 
 import com.peterfarber.LoggingUtil;
+import com.peterfarber.main.core.dao.AccountDao;
+import com.peterfarber.main.core.dao.UserDao;
 import com.peterfarber.main.core.exceptions.BankException;
 import com.peterfarber.main.core.exceptions.InvalidInput;
 import com.peterfarber.main.core.exceptions.UserNotFound;
 import com.peterfarber.main.core.gui.Menu;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -28,11 +31,14 @@ public class Interface {
 
     private Menu menu;
 
+    public UserDao userDao;
+    public AccountDao accountDao;
+
     public User loggedUser;
     public Account selectedAccount;
 
-    public DirectoryLoader<User> users;
-    public DirectoryLoader<Account> accounts;
+//    public DirectoryLoader<User> users;
+//    public DirectoryLoader<Account> accounts;
 
     /**
      * Interface Constructor sets up the interface
@@ -44,98 +50,90 @@ public class Interface {
         this.menu = new Menu();
         this.loggedUser = null;
         this.selectedAccount = null;
-        this.users = new DirectoryLoader("data/users");
-        this.accounts = new DirectoryLoader("data/accounts");
+        this.userDao = new UserDao();
+        this.accountDao = new AccountDao();
+//        this.users = new DirectoryLoader("data/users");
+//        this.accounts = new DirectoryLoader("data/accounts");
 
         this.scanner = new Scanner(System.in);
 
     }
 
     public void run(){
-        try {
-            //Load Information from directories/database (Users and Accounts)
-            this.users.load();
-            this.accounts.load();
 
-            Vector<String> value = null;
+        Vector<String> value = null;
 
-            //Run the application!
-            while(running) {
+        //Run the application!
+        while(running) {
 
-                try {
-                    System.out.println();
-                    value = this.menu.displayMenu();
-                    if(value.get(0).equals("0")){
-                        System.exit(-1);
-                    }
+            try {
+                System.out.println();
+                value = this.menu.displayMenu();
+                if (value.get(0).equals("0")) {
+                    System.exit(-1);
                 }
-                catch (BankException e){
-                    System.out.println("\n*******Exception*******");
-                    System.out.println(e.getMessage() + "\n");
-                }
-                switch(this.menu.getMenu()){
-                    case MAIN:
-                        try {
-                            mainOperations(value);
-                        }catch(Exception e){
-                            System.out.println("\n*******Exception*******");
-                            System.out.println(e.getMessage() + "\n");
-                        }
-                        break;
-                    case LOGIN:
-                        try {
-                            loginOperations(value);
-                        }catch(BankException e){
-                            System.out.println("\n*******Exception*******");
-                            System.out.println(e.getMessage() + "\n");
-                        }
-                        break;
-                    case CUSTOMER:
-                        try{
-                            customerOperations(value);
-                        }catch(BankException e){
-                            System.out.println("\n*******Exception*******");
-                            System.out.println(e.getMessage() + "\n");
-                        }
-                        break;
-                    case EMPLOYEE:
-                        try{
-                            employeeOperations(value);
-                        }catch(BankException e){
-                            System.out.println("\n*******Exception*******");
-                            System.out.println(e.getMessage() + "\n");
-                        }
-                        break;
-                    case CREATE_USER:
-                        try {
-                            createUserOperations(value);
-                        }catch(BankException e){
-                            System.out.println("\n*******Exception*******");
-                            System.out.println(e.getMessage() + "\n");
-                        }
-                        break;
-                    case ACCOUNT:
-                        try {
-                            accountOperations(value);
-                        }catch(BankException e){
-                            System.out.println("\n*******Exception*******");
-                            System.out.println(e.getMessage() + "\n");
-                        }
-                        break;
-                    case ADMIN:
-                        try{
-                            adminOperations(value);
-                        }catch(BankException e){
-                            System.out.println("\n*******Exception*******");
-                            System.out.println(e.getMessage() + "\n");
-                        }
-                        break;
-                }
+            } catch (BankException e) {
+                System.out.println("\n*******Exception*******");
+                System.out.println(e.getMessage() + "\n");
             }
-        }
-        catch(BankException e){
-            System.out.println("\n*******Exception*******");
-            System.out.println(e.getMessage() + "\n");
+            switch (this.menu.getMenu()) {
+                case MAIN:
+                    try {
+                        mainOperations(value);
+                    } catch (Exception e) {
+                        System.out.println("\n*******Exception*******");
+                        System.out.println(e.getMessage() + "\n");
+                    }
+                    break;
+                case LOGIN:
+                    try {
+                        loginOperations(value);
+                    } catch (BankException e) {
+                        System.out.println("\n*******Exception*******");
+                        System.out.println(e.getMessage() + "\n");
+                    }
+                    break;
+                case CUSTOMER:
+                    try {
+                        customerOperations(value);
+                    } catch (BankException e) {
+                        System.out.println("\n*******Exception*******");
+                        System.out.println(e.getMessage() + "\n");
+                    }
+                    break;
+                case EMPLOYEE:
+                    try {
+                        employeeOperations(value);
+                    } catch (BankException e) {
+                        System.out.println("\n*******Exception*******");
+                        System.out.println(e.getMessage() + "\n");
+                    }
+                    break;
+                case CREATE_USER:
+                    try {
+                        createUserOperations(value);
+                    } catch (BankException e) {
+                        System.out.println("\n*******Exception*******");
+                        System.out.println(e.getMessage() + "\n");
+                    }
+                    break;
+                case ACCOUNT:
+                    try {
+                        accountOperations(value);
+                    } catch (BankException e) {
+                        System.out.println("\n*******Exception*******");
+                        System.out.println(e.getMessage() + "\n");
+                    }
+                    break;
+                case ADMIN:
+                    try {
+                        adminOperations(value);
+                    } catch (BankException e) {
+                        System.out.println("\n*******Exception*******");
+                        System.out.println(e.getMessage() + "\n");
+                    }
+                    break;
+            }
         }
     }
 
@@ -159,7 +157,7 @@ public class Interface {
             switch (value.get(0)) {
                 case "1":
                     //Select Account
-                    ArrayList<Account> accounts = findUserAccounts(loggedUser);
+                    List<Account> accounts = accountDao.retrieveByUsername(loggedUser.getUsername());
                     if(accounts.size() > 0){
                         System.out.println("\nSelect Account: ");
                         for(int i = 0; i < accounts.size(); i++){
@@ -286,7 +284,7 @@ public class Interface {
                     if(!Validator.noCharacter(inputString) || !Validator.notNull(inputString)){
                         throw new InvalidInput();
                     }
-                    Account account = findAccount(inputString);
+                    Account account = accountDao.retrieveByString(inputString);
                     if(account != null) {
                         System.out.print("\nEnter Amount:");
                         inputString = scanner.nextLine();
@@ -316,11 +314,10 @@ public class Interface {
 
     private void createUserOperations(Vector<String> value) throws BankException{
         if(value != null) {
-            User person = findUser(value.get(1));
+            User person = userDao.retrieveByString(value.get(1));
             if (person == null) {
                 User user = new Customer(value.get(0),value.get(1), value.get(2));
-                user.save();
-                this.users.add(user);
+                userDao.createPreparedStmt(user);
                 loggedUser = user;
                 LoggingUtil.logInfo(user.getUsername() + ": User Created!");
                 menu.setMenu(Menu.MenuEnum.CUSTOMER);
@@ -333,7 +330,7 @@ public class Interface {
 
     private void loginOperations(Vector<String> value) throws BankException{
         if(value != null) {
-            User person = findUser(value.get(0));
+            User person = userDao.retrieveByString(value.get(0));
             if (person != null) {
                 if (person.getPassword().equals(value.get(1))) {
                     this.loggedUser = person;
@@ -363,6 +360,7 @@ public class Interface {
         Double balance = Double.parseDouble(amount);
         if(selectedAccount.getBalance() >= balance) {
             selectedAccount.setBalance(selectedAccount.getBalance()-balance);
+            accountDao.update(selectedAccount);
             LoggingUtil.logInfo(loggedUser.getUsername() + ": Withdrew " + balance + " from " + selectedAccount.getAccountNumber() + " account!");
         }else{
             throw new BankException("Not Enough Money In Account To Withdraw!");
@@ -372,18 +370,17 @@ public class Interface {
     public void deposit(String amount) throws BankException{
         Double balance = Double.parseDouble(amount);
         selectedAccount.setBalance(selectedAccount.getBalance()+balance);
+        accountDao.update(selectedAccount);
         LoggingUtil.logInfo(loggedUser.getUsername() + ": Deposited " + balance + " from " + selectedAccount.getAccountNumber() + " account!");
 
     }
 
     public void transfer(String accountB, String amount) throws BankException{
-        Account b = findAccount(accountB);
+        Account b = accountDao.retrieveByString(accountB);
         Double balance = Double.parseDouble(amount);
         if(selectedAccount.getBalance() >= balance){
-            selectedAccount.setBalance(selectedAccount.getBalance()-balance);
-            selectedAccount.save();
-            b.setBalance(b.getBalance()+balance);
-            b.save();
+            accountDao.transferFunds(selectedAccount, b, balance);
+            selectAccount(selectedAccount.getAccountNumber());
             LoggingUtil.logInfo(loggedUser.getUsername() + ": Transferred " + balance + " from " + selectedAccount.getAccountNumber() + " to " + b.getAccountNumber() + ".");
         }else{
             throw new BankException("Not Enough Money In Account To Transfer!");
@@ -392,8 +389,7 @@ public class Interface {
 
     public void cancelAccount(){
         LoggingUtil.logInfo(loggedUser.getUsername() + ": Deleted " + selectedAccount.getAccountNumber() + ".");
-        accounts.remove(selectedAccount);
-        selectedAccount.delete();
+        accountDao.delete(selectedAccount.getAccountNumber());
         selectedAccount = null;
         if(loggedUser instanceof Admin){
             menu.setMenu(Menu.MenuEnum.ADMIN);
@@ -403,7 +399,7 @@ public class Interface {
     }
 
     public void selectAccount(String accountNumber) throws BankException{
-        Account account = findAccount(accountNumber);
+        Account account = accountDao.retrieveByString(accountNumber);
         Account.StatusEnum status = account.getStatus();
         if(loggedUser instanceof Admin){
             selectedAccount = account;
@@ -425,10 +421,10 @@ public class Interface {
     }
 
     public void applyForAccount() throws BankException{
-        if(findUserAccount(this.loggedUser.getUsername()) == null){
-            Account account = new Account(loggedUser);
-            account.save();
-            this.accounts.add(account);
+        if(accountDao.retrieveByUsername(this.loggedUser.getUsername()).size() == 0){
+            Account account = new Account(loggedUser.getUsername());
+            account.join(loggedUser);
+            accountDao.createPreparedStmt(account);
             LoggingUtil.logInfo(loggedUser.getUsername() + ": applied for an account " + account.getAccountNumber() + ".");
             System.out.println("\n***********\nAccount Created! (Pending Approval)\n***********\n");
         }else{
@@ -437,10 +433,10 @@ public class Interface {
     }
 
     public void joinAccount(String accountNumber) throws BankException{
-        Account account = findAccount(accountNumber);
+        Account account = accountDao.retrieveByString(accountNumber);
         if(account != null){
             account.join(loggedUser);
-            account.save();
+            accountDao.update(account);
             LoggingUtil.logInfo(loggedUser.getUsername() + ": applied to join an account " + account.getAccountNumber() + ".");
             System.out.println("\n***********\nAccount Joined! (Pending Approval)\n***********\n");
         }
@@ -450,15 +446,14 @@ public class Interface {
     }
 
     public void displayPendingAccounts(){
-        for(int i = 0; i < accounts.getSize(); i++){
-            if(accounts.getIndex(i).getStatus() == Account.StatusEnum.PENDING){
-                System.out.println((i+1)+".) "+accounts.getIndex(i).getAccountNumber());
-            }
+        List<Account> accounts = accountDao.retrievePending();
+        for(int i = 0; i < accounts.size(); i++){
+                System.out.println((i+1)+".) "+accounts.get(i).getAccountNumber());
         }
     }
 
     public void viewAccount(String AccountNumber) throws BankException{
-        Account account = findAccount(AccountNumber);
+        Account account = accountDao.retrieveByString(AccountNumber);
         if(account != null){
             account.print();
             LoggingUtil.logInfo(loggedUser.getUsername() + ": printed account " + account.getAccountNumber() + ".");
@@ -468,6 +463,7 @@ public class Interface {
     }
 
     public void displayApproveDeny() throws BankException{
+        List<Account> accounts = accountDao.retrievePending();
         String inputString;
         displayPendingAccounts();
         System.out.print("Enter: ");
@@ -476,7 +472,7 @@ public class Interface {
             throw new InvalidInput();
         }
         Integer inputValue = Integer.parseInt(inputString);
-        if(inputValue > 0 && inputValue <= accounts.getSize()){
+        if(inputValue > 0 && inputValue <= accounts.size()){
             System.out.println("1.) Approve");
             System.out.println("2.) Deny");
             System.out.print("Enter:");
@@ -485,9 +481,9 @@ public class Interface {
                 throw new InvalidInput();
             }
             if(inputString.equals("1")) {
-                approveDenyAccount(accounts.getIndex(inputValue - 1).getAccountNumber(), true);
+                approveDenyAccount(accounts.get(inputValue - 1).getAccountNumber(), true);
             }else if(inputString.equals("2")){
-                approveDenyAccount(accounts.getIndex(inputValue - 1).getAccountNumber(), false);
+                approveDenyAccount(accounts.get(inputValue - 1).getAccountNumber(), false);
             }
         }else{
             throw new InvalidInput();
@@ -495,7 +491,7 @@ public class Interface {
     }
 
     public void approveDenyAccount(String accountNumber, boolean approved) throws BankException{
-        Account account = findAccount(accountNumber);
+        Account account = accountDao.retrieveByString(accountNumber);
 
         if(approved){
             LoggingUtil.logInfo(loggedUser.getUsername() + ": approved account " + account.getAccountNumber() + ".");
@@ -504,48 +500,8 @@ public class Interface {
             LoggingUtil.logInfo(loggedUser.getUsername() + ": denied account " + account.getAccountNumber() + ".");
             account.setStatus(Account.StatusEnum.DENIED);
         }
+        accountDao.update(account);
     }
 
-    /* Search Functions */
-
-    public User findUser(String username) throws BankException {
-        for(int i = 0; i < this.users.getSize(); i++){
-            User v = this.users.getIndex(i);
-            if(username.equals(v.getUsername())){
-                return v;
-            }
-        }
-        return null;
-    }
-
-    public ArrayList<Account> findUserAccounts(User user) throws BankException {
-        ArrayList<Account> accountReturn = new ArrayList<Account>();
-        for(int i = 0; i < this.accounts.getSize(); i++){
-            if(this.accounts.getIndex(i).checkAccountForUser(user)){
-                accountReturn.add(this.accounts.getIndex(i));
-            }
-        }
-        return accountReturn;
-    }
-
-    public Account findUserAccount(String username) throws BankException {
-        for(int i = 0; i < this.accounts.getSize(); i++){
-            Account v = this.accounts.getIndex(i);
-            if(username.equals(v.getAccountOwner().getUsername())){
-                return v;
-            }
-        }
-        return null;
-    }
-
-    public Account findAccount(String accountNumber) throws BankException {
-        for(int i = 0; i < this.accounts.getSize(); i++){
-            Account v = this.accounts.getIndex(i);
-            if(v.getAccountNumber().equals(accountNumber)){
-                return v;
-            }
-        }
-        return null;
-    }
 
 }

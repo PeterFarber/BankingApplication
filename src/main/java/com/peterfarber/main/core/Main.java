@@ -17,12 +17,28 @@ public class Main {
 //        Account account = new Account(customer);
 //        account.save();
 
+//        DBConnection dbcInstance = DBConnection.getInstance();
+//
+//        dbcInstance.openConnection();
+//
+//        User customer = new Customer("PeterFarber", "Wizkid", "12345");
+//        customer.save();
+//
+//        Account account = new Account(customer.getUsername());
+//        account.join(customer);
+//        account.save();
+
+//        DBLoader dbLoader = new DBLoader();
+//        dbLoader.loadData("Wizkid", "12345");
+
         //Create an Instance of Interface class.
         Interface theInterface = new Interface();
         theInterface.run();
 
-        //Close Application!
-        System.exit(1);
+//        dbcInstance.closeConnection();
+
+//        //Close Application!
+//        System.exit(1);
 
 
     }

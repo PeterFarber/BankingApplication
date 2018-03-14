@@ -37,9 +37,6 @@ public class Interface {
     public User loggedUser;
     public Account selectedAccount;
 
-//    public DirectoryLoader<User> users;
-//    public DirectoryLoader<Account> accounts;
-
     /**
      * Interface Constructor sets up the interface
      * and calls some methods for initialization.
@@ -47,14 +44,12 @@ public class Interface {
     public Interface(){
         //Initialize all variables to null! cuz ya know why not!
         this.running = true;
-        this.menu = new Menu();
         this.loggedUser = null;
         this.selectedAccount = null;
+
+        this.menu = new Menu();
         this.userDao = new UserDao();
         this.accountDao = new AccountDao();
-//        this.users = new DirectoryLoader("data/users");
-//        this.accounts = new DirectoryLoader("data/accounts");
-
         this.scanner = new Scanner(System.in);
 
     }

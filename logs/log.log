@@ -189,3 +189,10 @@
 2018-03-12 15:48:36 INFO  root:28 - Wizkid: Logged In!
 2018-03-12 15:48:40 INFO  root:28 - Wizkid: is accessing 234498496.
 2018-03-12 15:48:43 INFO  root:28 - Wizkid: Withdrew 10.0 from 234498496 account!
+2018-03-13 10:00:37 INFO  root:28 - Wizkid: Logged In!
+2018-03-13 11:49:47 INFO  root:28 - Peter: User Created!
+2018-03-13 11:49:52 INFO  root:28 - Peter: applied for an account 808275736.
+2018-03-13 11:50:07 INFO  root:28 - Admin: Logged In!
+2018-03-13 11:50:13 INFO  root:28 - Admin: approved account 808275736.
+2018-03-13 11:50:21 INFO  root:28 - Peter: Logged In!
+2018-03-13 11:50:23 INFO  root:28 - Peter: is accessing 808275736.
